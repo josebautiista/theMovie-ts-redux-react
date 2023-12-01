@@ -1,0 +1,30 @@
+{
+  "peliculas": [
+    {
+      "id": 1,
+      "title": "The Batman",
+      "year": 2022,
+      "genre": "Action",
+      "director": "Matt Reeves",
+      "actors": ["Robert Pattinson", "Zoe Kravitz", "Jeffrey Wright"]
+    },
+
+    {
+      "id": 2,
+      "title": "The Batman",
+      "year": 2022,
+      "genre": "Action",
+      "director": "Matt Reeves",
+      "actors": ["Robert Pattinson", "Zoe Kravitz", "Jeffrey Wright"]
+    },
+
+    {
+      "id": 3,
+      "title": "The Batman",
+      "year": 2022,
+      "genre": "Action",
+      "director": "Matt Reeves",
+      "actors": ["Robert Pattinson", "Zoe Kravitz", "Jeffrey Wright"]
+    }
+  ]
+}
