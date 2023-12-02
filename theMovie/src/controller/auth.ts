@@ -10,7 +10,7 @@ export const login = async (data: {
   try {
     const { email, password } = data
 
-    const response = await axios.get<Users[]>('http://localhost:3000/users')
+    const response = await axios.get<Users[]>(`http://${import.meta.env.VITE_API_URL}:3000/users`)
     const users: Users[] = response.data
 
     const userFound = users.find((user: Users) => user.email === email)
@@ -48,7 +48,7 @@ export const register = async (data: {
       throw new Error('Error al generar el hash de la contraseña')
     }
 
-    const userCreated = await axios.post('http://localhost:3000/users', {
+    const userCreated = await axios.post(`http://${import.meta.env.VITE_API_URL}:3000/users`, {
       id: uuidv4(),
       username,
       email,

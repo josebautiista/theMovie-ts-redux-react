@@ -1,0 +1,93 @@
+import { useState } from 'react'
+import { type UserLogin } from '../type'
+import { RxHamburgerMenu } from 'react-icons/rx'
+import { IoIosArrowBack } from 'react-icons/io'
+import { FaRegUserCircle } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+
+interface Props {
+  handleLogout: () => void
+  user: UserLogin
+}
+
+export const MenuMobile: React.FC<Props> = ({ user, handleLogout }): JSX.Element => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleMenu = (): void => {
+    setIsOpen(!isOpen)
+  }
+  return (
+        <> <button
+        className="fixed top-5 left-5 z-30 p-2 "
+        style={{ display: isOpen ? 'none' : 'block' }}
+        onClick={toggleMenu}
+      >
+        <RxHamburgerMenu className="text-3xl text-white" />
+      </button>
+      <div
+        className={`fixed top-0 left-0 h-full w-full bg-gray-800 bg-opacity-75 z-40 transform transition-transform duration-300 ${
+          isOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <div className="h-full w-full bg-transparent py-8 px-10 z-40 flex flex-col gap-10">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-5">
+              <FaRegUserCircle className="text-4xl mb-4 text-white" />
+              <h1 className="text-2xl font-bold mb-4 text-white">
+                {user.username}
+              </h1>
+            </div>
+
+            <IoIosArrowBack
+              className="text-4xl mb-4 text-white"
+              onClick={toggleMenu}
+            />
+          </div>
+
+          <ul className="text-white flex flex-col items-start gap-5">
+            <Link
+              to="#popular"
+              className="mb-2 text-xl text-white"
+              onClick={toggleMenu}
+            >
+              Popular Movies
+            </Link>
+            <Link
+              to="#rated"
+              className="mb-2 text-xl text-white"
+              onClick={toggleMenu}
+            >
+              Top Rated
+            </Link>
+            <Link
+              to="#upcoming"
+              className="mb-2 text-xl text-white"
+              onClick={toggleMenu}
+            >
+              Upcoming
+            </Link>
+            <Link
+              to="#favorites"
+              className="mb-2 text-xl text-white"
+              onClick={toggleMenu}
+            >
+              Favorites
+            </Link>
+          </ul>
+
+          <ul className="text-white flex flex-col items-start gap-5">
+            <Link
+              to="#account"
+              className="mb-2 text-2xl text-white font-bold"
+              onClick={toggleMenu}
+            >
+              Acount
+            </Link>
+            <li className="mb-2 text-xl" onClick={handleLogout}>
+              Logout
+            </li>
+          </ul>
+        </div>
+      </div></>
+  )
+}

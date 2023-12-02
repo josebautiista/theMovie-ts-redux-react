@@ -31,7 +31,7 @@ export const Register: React.FC = () => {
     event.preventDefault()
     const { token, user } = await register(data)
     if (token !== null) {
-      localStorage.setItem('token', token)
+      localStorage.setItem('tokenMovie', token)
       localStorage.setItem('user', JSON.stringify(user))
       dispatch(setToken(token))
       dispatch(setUserLogin(user))
@@ -76,7 +76,7 @@ export const Register: React.FC = () => {
             <Button text="Register" />
           </form>
           <p className="text-white text-center text-base mt-7">
-            Do you have an account? <Link to="/login">login</Link>
+            Do you have an account? <Link to="/login">Login</Link>
           </p>
         </div>
       </div>

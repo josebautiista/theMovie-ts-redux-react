@@ -28,7 +28,7 @@ export const Login: React.FC = () => {
     event.preventDefault()
     const { token, user } = await login(data)
     if (token !== null) {
-      localStorage.setItem('token', token)
+      localStorage.setItem('tokenMovie', token)
       localStorage.setItem('user', JSON.stringify(user))
       dispatch(setToken(token))
       dispatch(setUserLogin(user))
