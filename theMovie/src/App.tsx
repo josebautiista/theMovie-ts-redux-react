@@ -1,23 +1,21 @@
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
+import { Login } from './pages/Login'
+import { Register } from './pages/Register'
+import { Inicio } from './pages/Inicio'
+import { useSelector } from 'react-redux'
 import './App.css'
-import { Button } from './atoms/Button'
-import { CoverMovie } from './atoms/CoverMovie'
-import { InputSearch } from './atoms/InputSearch'
-import { Input } from './atoms/input'
 
 function App (): JSX.Element {
+  const token = useSelector((state: any) => state.token.token)
+
   return (
-    <div className="w-full">
-      <CoverMovie image="https://image.tmdb.org/t/p/original//pD6sL4vntUOXHmuvJPPZAgvyfd9.jpg" title="title" />
-      <InputSearch placeholder="Placeholder" onChange={() => {}} />
-      <Input
-        type="password"
-        placeholder="Placeholder"
-        onChange={() => {}}
-        name="name"
-        value="hola"
-      />
-      <Button text="Button" onClick={() => {}} />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={token !== null ? <Inicio /> : <Navigate to="/login" />} />
+      </Routes>
+    </Router>
   )
 }
 

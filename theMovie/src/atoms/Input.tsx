@@ -6,6 +6,7 @@ interface Props {
   placeholder: string
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   name: string
+  label: string
   value: string
 }
 
@@ -14,6 +15,7 @@ export const Input: React.FC<Props> = ({
   placeholder,
   onChange,
   name,
+  label,
   value
 }) => {
   const [showPassword, setShowPassword] = useState(false)
@@ -25,35 +27,39 @@ export const Input: React.FC<Props> = ({
   }
 
   return (
-    <div className="relative">
+    <div className="relative flex flex-col items-start">
+      <label htmlFor={name} className=' text-left text-base text-blue-500'>{label}</label>
       <input
         type={typeInput}
         placeholder={placeholder}
         onChange={onChange}
         name={name}
         value={value}
-        className="w-full h-12 rounded-lg py-2 px-4 outline-blue-400 font-bold text-gray-800"
+        className="w-full h-12 rounded-lg py-2 px-4 outline-blue-400 font-bold text-gray-800 mt-2"
+        required
       />
       {type === 'password'
-        ? showPassword
-          ? (
-        <div className='cursor-pointer'>
-          <IoIosEye
-            className="absolute right-4 top-3 text-blue-400"
-            size={24}
-            onClick={handleShowPassword}
-          />
-        </div>
-            )
-          : (
-        <div className='cursor-pointer'>
-          <IoIosEyeOff
-            className="absolute right-4 top-3 text-blue-400"
-            size={24}
-            onClick={handleShowPassword}
-          />
-        </div>
-            )
+        ? (
+            showPassword
+              ? (
+          <div className="cursor-pointer">
+            <IoIosEye
+              className="absolute right-4 top-11 text-blue-400"
+              size={24}
+              onClick={handleShowPassword}
+            />
+          </div>
+                )
+              : (
+          <div className="cursor-pointer">
+            <IoIosEyeOff
+              className="absolute right-4 top-11 text-blue-400"
+              size={24}
+              onClick={handleShowPassword}
+            />
+          </div>
+                )
+          )
         : null}
     </div>
   )
