@@ -15,11 +15,25 @@ Instalación:
 3. Crear en la ruta ./theMovie un archivo de variables de entorno llamado .env.local
 4. Ir a la página https://www.themoviedb.org/ registrarse y obtener la API key y el Access token
 5. Crear las variables de entorno en .env.local llamadas VITE_ACCESS_TOKEN y VITE_API_KEY con los valores de https://www.themoviedb.org/
-6. Dentro del proyecto ir a ./theMovie y ejecutar npm install
+6. Dentro del proyecto ir a ./theMovie y ejecutar 
+```bash
+npm install
+```
 7. Una vez creada la carpeta node_modules abrir dos terminales
 8. En una terminal ejecutar npm run dev, esto ejecutará el frontend
-9. En la otra terminal ejecutar el comando json-server --watch db.json --port 3000 esto ejecutará la un backend simulado
-*** Si no tiene instalado json-server en su PC, puede hacerlo con npm install -g json-server si no desea instalarlo puede ejecutar npx json-server --watch db.json --port 3000 ***
+9. En la otra terminal ejecutar el comando
+```bash
+json-server --watch db.json --port 3000
+```
+esto ejecutará la un backend simulado.
+Si no tiene instalado json-server en su PC, puede hacerlo con
+```bash
+ npm install -g json-server
+```
+si no desea instalarlo puede ejecutar
+```bash
+npx json-server --watch db.json --port 3000
+```
 10. El proyecto por defecto viene con un usuario guardado las credenciales son email: admin@admin.com  password: admin123
 
 login:
