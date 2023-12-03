@@ -1,64 +1,30 @@
 {
   "users": [
     {
-      "id": "04f3c766-5f29-401b-a4ee-f077352d8cbc",
-      "username": "admin",
-      "email": "admin@admin.com",
-      "password": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
-    },
-    {
-      "id": "e4db3897-57ce-450f-bf33-25446d629f07",
-      "username": "test1",
-      "email": "test1@test1.com",
-      "password": "1b4f0e9851971998e732078544c96b36c3d01cedf7caa332359d6f1d83567014"
-    },
-    {
       "id": "02c76649-6a7c-4ceb-a221-73a27a3867eb",
       "username": "test2",
       "email": "test2@test2.com",
-      "password": "60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752"
+      "password": "60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752",
+      "favorite": []
     },
     {
-      "id": "013e1462-3901-4ae8-b650-8dcc09562f5c",
-      "username": "test2",
-      "email": "test2@test2.com",
-      "password": "60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752"
+      "id": "dc96eed5-864e-470c-8e32-8c49d239d755",
+      "username": "admin",
+      "email": "admin@admin.com",
+      "password": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+      "favorite": [
+        240,
+        753342,
+        901362,
+        695721
+      ]
     },
     {
-      "id": "4dc6b35c-dc52-477a-a291-1a9cb32cfbd1",
-      "username": "test3",
-      "email": "test3@test3.com",
-      "password": "fd61a03af4f77d870fc21e05e7e80678095c92d808cfb3b5c279ee04c74aca13"
-    },
-    {
-      "id": "6f928c1e-c69a-45c7-a1af-098eca3d6915",
-      "username": "jose",
-      "email": "josebautiista@gmail.com",
-      "password": "a5412d7fca9299d102bd61f9f7c7787cfae055f6dd7323213f2167fe46d0ce5d"
-    },
-    {
-      "id": "33ab4e95-c282-4c85-ac98-3e98e9b95e81",
-      "username": "jose",
-      "email": "josebautiista@gmail.com",
-      "password": "062bdba5aedfea8cacd3fea8d3341895b8e9f1b0b23c600970769faf26d6ff84"
-    },
-    {
-      "id": "6b2b4c77-7779-4d87-8ad3-69d7b312685c",
-      "username": "test4",
-      "email": "test4@test4.com",
-      "password": "a4e624d686e03ed2767c0abd85c14426b0b1157d2ce81d27bb4fe4f6f01d688a"
-    },
-    {
-      "id": "a1edb0fa-fbf9-4776-a71c-a40313e4ee51",
-      "username": "test5",
-      "email": "test5@test5.com",
-      "password": "a140c0c1eda2def2b830363ba362aa4d7d255c262960544821f556e16661b6ff"
-    },
-    {
-      "id": "52ab099c-8e72-4ff6-99df-14ebe38b613a",
-      "username": "test6",
-      "email": "test6@test6.com",
-      "password": "ed0cb90bdfa4f93981a7d03cff99213a86aa96a6cbcf89ec5e8889871f088727"
+      "id": "94450bf8-ceb5-4a53-b89f-cff178b0d965",
+      "username": "test1",
+      "email": "test1@test1.com",
+      "password": "1b4f0e9851971998e732078544c96b36c3d01cedf7caa332359d6f1d83567014",
+      "favorite": []
     }
   ]
 }

@@ -13,7 +13,8 @@ export const Register: React.FC = () => {
     id: '',
     email: '',
     password: '',
-    username: ''
+    username: '',
+    favorite: []
   })
   const dispatch = useDispatch()
   const navigate = useNavigate()

@@ -1,23 +1,23 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { type Movie } from '../../type.d'
 
-export interface MoviesState {
-  movies: Movie
+export interface RatedState {
+  rated: Movie
 }
 
 const initialState: Movie = []
 
-export const MoviesSlice = createSlice({
-  name: 'movies',
+export const RatedSlice = createSlice({
+  name: 'rated',
   initialState,
   reducers: {
-    setMovies: (state, action: PayloadAction<Movie>) => {
+    setRated: (state, action: PayloadAction<Movie>) => {
       state.splice(0, state.length)
       state.push(...action.payload)
     }
   }
 })
 
-export const { setMovies } = MoviesSlice.actions
+export const { setRated } = RatedSlice.actions
 
-export default MoviesSlice.reducer
+export default RatedSlice.reducer

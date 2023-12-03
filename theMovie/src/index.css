@@ -5,6 +5,7 @@
 
 html, body, label {
   font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -13,6 +14,7 @@ html, body, label {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 a {
@@ -31,9 +33,25 @@ body {
   min-height: 100vh;
   margin: 0 auto;
   background-color: #002131;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
 }

@@ -15,15 +15,29 @@ export const UserSlice = createSlice({
   initialState,
   reducers: {
     setUserLogin: (state, action: PayloadAction<UserLogin | null>) => {
-      console.log('action.payload', action.payload)
       state.user = action.payload
     },
     clearUserLogin: (state) => {
       state.user = null
+    },
+    setFavoriteUser: (state, action: PayloadAction<number>) => {
+      if (state.user !== null) {
+        state.user.favorite.push(action.payload)
+        localStorage.setItem('user', JSON.stringify(state.user))
+      }
+    },
+    clearFavoriteUser: (state, action: PayloadAction<number>) => {
+      if (state.user !== null) {
+        const index = state.user.favorite.indexOf(action.payload)
+        if (index !== -1) {
+          state.user.favorite.splice(index, 1)
+          localStorage.setItem('user', JSON.stringify(state.user))
+        }
+      }
     }
   }
 })
 
-export const { setUserLogin, clearUserLogin } = UserSlice.actions
+export const { setUserLogin, clearUserLogin, setFavoriteUser, clearFavoriteUser } = UserSlice.actions
 
 export default UserSlice.reducer

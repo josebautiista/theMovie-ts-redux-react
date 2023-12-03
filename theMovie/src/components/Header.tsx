@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { type UserLogin } from '../type'
+import { type userLogin, type UserLogin } from '../type'
 import { clearUserLogin } from '../features/user/user'
 import { clearToken } from '../features/token/token'
 import { MenuMobile } from './MenuMobile'
@@ -8,7 +8,7 @@ import { MenuDesktop } from './MenuDesktop'
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const user: UserLogin = useSelector((state: any) => state.user.user)
+  const user: UserLogin = useSelector((state: userLogin) => state.user.user)
   const dispatch = useDispatch()
 
   const toggleMenu = (): void => {

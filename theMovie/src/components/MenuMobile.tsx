@@ -10,15 +10,20 @@ interface Props {
   user: UserLogin
 }
 
-export const MenuMobile: React.FC<Props> = ({ user, handleLogout }): JSX.Element => {
+export const MenuMobile: React.FC<Props> = ({
+  user,
+  handleLogout
+}): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = (): void => {
     setIsOpen(!isOpen)
   }
   return (
-        <> <button
-        className="fixed top-5 left-5 z-30 p-2 "
+    <>
+      {' '}
+      <button
+        className="absolute top-5 left-5 z-30 p-2 "
         style={{ display: isOpen ? 'none' : 'block' }}
         onClick={toggleMenu}
       >
@@ -38,41 +43,35 @@ export const MenuMobile: React.FC<Props> = ({ user, handleLogout }): JSX.Element
               </h1>
             </div>
 
-            <IoIosArrowBack
-              className="text-4xl mb-4 text-white"
-              onClick={toggleMenu}
-            />
+            <div className="cursor-pointer">
+              <IoIosArrowBack
+                className="text-4xl mb-4 text-white"
+                onClick={toggleMenu}
+              />
+            </div>
           </div>
 
           <ul className="text-white flex flex-col items-start gap-5">
-            <Link
-              to="#popular"
-              className="mb-2 text-xl text-white"
-              onClick={toggleMenu}
-            >
-              Popular Movies
-            </Link>
-            <Link
-              to="#rated"
-              className="mb-2 text-xl text-white"
-              onClick={toggleMenu}
-            >
-              Top Rated
-            </Link>
-            <Link
-              to="#upcoming"
-              className="mb-2 text-xl text-white"
-              onClick={toggleMenu}
-            >
-              Upcoming
-            </Link>
-            <Link
-              to="#favorites"
-              className="mb-2 text-xl text-white"
-              onClick={toggleMenu}
-            >
-              Favorites
-            </Link>
+            <li onClick={toggleMenu}>
+              <a href="/#popular" className="mb-2 text-md text-white">
+                Popular
+              </a>
+            </li>
+            <li onClick={toggleMenu}>
+              <a href="/#rated" className="mb-2 text-md text-white">
+                Top Rated
+              </a>
+            </li>
+            <li onClick={toggleMenu}>
+              <a href="/#upcoming" className="mb-2 text-md text-white">
+                Upcoming
+              </a>
+            </li>
+            <li onClick={toggleMenu}>
+              <a href="/#favorites" className="mb-2 text-md text-white">
+                Favorite
+              </a>
+            </li>
           </ul>
 
           <ul className="text-white flex flex-col items-start gap-5">
@@ -88,6 +87,7 @@ export const MenuMobile: React.FC<Props> = ({ user, handleLogout }): JSX.Element
             </li>
           </ul>
         </div>
-      </div></>
+      </div>
+    </>
   )
 }

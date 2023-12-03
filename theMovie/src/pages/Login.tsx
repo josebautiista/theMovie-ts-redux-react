@@ -33,6 +33,7 @@ export const Login: React.FC = () => {
       dispatch(setToken(token))
       dispatch(setUserLogin(user))
       navigate('/')
+      window.location.reload()
     } else {
       setError(true)
     }

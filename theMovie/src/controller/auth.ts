@@ -27,7 +27,7 @@ export const login = async (data: {
 
     const token = generarToken()
 
-    return { token, user: { id: userFound.id, username: userFound.username, email: userFound.email } }
+    return { token, user: { id: userFound.id, username: userFound.username, email: userFound.email, favorite: userFound.favorite } }
   } catch (error) {
     console.error(error)
     return { token: null, user: null }
@@ -52,7 +52,8 @@ export const register = async (data: {
       id: uuidv4(),
       username,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      favorite: []
     })
 
     const token = generarToken()
@@ -60,7 +61,8 @@ export const register = async (data: {
     const user: UserLogin = {
       id: userCreated.data.id,
       username: userCreated.data.username,
-      email: userCreated.data.email
+      email: userCreated.data.email,
+      favorite: userCreated.data.favorite
     }
 
     return { token, user }
