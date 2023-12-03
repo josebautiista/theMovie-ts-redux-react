@@ -5,7 +5,9 @@ interface TokenState {
 }
 
 const storedToken = localStorage.getItem('tokenMovie')
-const initialState: TokenState = storedToken ? { token: storedToken } : { token: null }
+const initialState: TokenState = storedToken !== null
+  ? { token: storedToken }
+  : { token: null }
 
 export const TokenSlice = createSlice({
   name: 'token',

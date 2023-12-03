@@ -25,11 +25,11 @@ const Header: React.FC = () => {
   }
 
   return (
-    <div className='absolute top-0 left-0 w-full px-5'>
-      <div className='flex md:hidden'>
+    <div className="absolute top-0 left-0 w-full px-5">
+      <div className="flex md:hidden">
         <MenuMobile handleLogout={handleLogout} user={user} />
       </div>
-      <div className='hidden md:flex'>
+      <div className="hidden md:flex">
         <MenuDesktop handleLogout={handleLogout} user={user} />
       </div>
     </div>

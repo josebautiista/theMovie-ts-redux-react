@@ -7,7 +7,7 @@ export interface UserState {
 
 const storedUser = localStorage.getItem('user')
 const initialState: UserState = {
-  user: storedUser ? JSON.parse(storedUser) : null
+  user: storedUser !== null ? JSON.parse(storedUser) : null
 }
 
 export const UserSlice = createSlice({
@@ -38,6 +38,11 @@ export const UserSlice = createSlice({
   }
 })
 
-export const { setUserLogin, clearUserLogin, setFavoriteUser, clearFavoriteUser } = UserSlice.actions
+export const {
+  setUserLogin,
+  clearUserLogin,
+  setFavoriteUser,
+  clearFavoriteUser
+} = UserSlice.actions
 
 export default UserSlice.reducer

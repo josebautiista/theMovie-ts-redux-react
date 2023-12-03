@@ -12,11 +12,7 @@ interface Props {
   id: string
 }
 
-export const SectionMovies: React.FC<Props> = ({
-  nombre,
-  movies,
-  id
-}) => {
+export const SectionMovies: React.FC<Props> = ({ nombre, movies, id }) => {
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(true)
   const [active, setActive] = useState(false)
@@ -57,9 +53,11 @@ export const SectionMovies: React.FC<Props> = ({
 
       <div className="flex overflow-x-auto gap-6">
         {id === 'favorites' && movies.length === 0
-          ? (<div className="w-full h-96 flex items-center justify-center">
-          <NotFound />
-        </div>)
+          ? (
+          <div className="w-full h-96 flex items-center justify-center">
+            <NotFound />
+          </div>
+            )
           : movies.length === 0
             ? (
           <div className="w-full h-96 flex items-center justify-center">
@@ -75,10 +73,7 @@ export const SectionMovies: React.FC<Props> = ({
               : (
                   filteredMovies.map((movie, index) => (
             <div key={index} className="w-auto py-4">
-
-              <CoverMovie
-               movie={movie}
-              />
+              <CoverMovie movie={movie} />
             </div>
                   ))
                 )}

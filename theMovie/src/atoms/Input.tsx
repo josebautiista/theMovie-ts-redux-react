@@ -28,7 +28,9 @@ export const Input: React.FC<Props> = ({
 
   return (
     <div className="relative flex flex-col items-start">
-      <label htmlFor={name} className=' text-left text-base text-blue-500'>{label}</label>
+      <label htmlFor={name} className=" text-left text-base text-blue-500">
+        {label}
+      </label>
       <input
         type={typeInput}
         placeholder={placeholder}

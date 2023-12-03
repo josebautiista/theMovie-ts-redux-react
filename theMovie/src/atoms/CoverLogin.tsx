@@ -6,9 +6,7 @@ import { type Movie } from '../type.d'
 import { Loading } from './Loading'
 
 export const CoverLogin: React.FC = () => {
-  const movies: Movie = useSelector(
-    (state: MoviesState) => state.movies
-  )
+  const movies: Movie = useSelector((state: MoviesState) => state.movies)
   const dispatch = useDispatch()
   const [urlImage, setUrlImage] = useState('/4XM8DUTQb3lhLemJC51Jx4a2EuA.jpg')
 
@@ -16,8 +14,7 @@ export const CoverLogin: React.FC = () => {
     axios
       .get('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', {
         headers: {
-          Authorization:
-            `Bearer ${import.meta.env.VITE_API_KEY}`,
+          Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
           Accept: 'application/json'
         }
       })
@@ -39,7 +36,9 @@ export const CoverLogin: React.FC = () => {
       }
     }, 6000)
 
-    return () => { clearInterval(interval) }
+    return () => {
+      clearInterval(interval)
+    }
   }, [movies])
 
   return (

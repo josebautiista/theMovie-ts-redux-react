@@ -77,7 +77,14 @@ export const DetailMovie = (): JSX.Element => {
                   }
                 )}
               </ul>
-              <a href={movie.homepage} className="text-white text-2xl" target='_blank' rel="noreferrer">Visit website</a>
+              <a
+                href={movie.homepage}
+                className="text-white text-2xl"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Visit website
+              </a>
             </div>
           </div>
         )}

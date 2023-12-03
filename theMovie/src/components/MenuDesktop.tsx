@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { IoIosArrowDown } from 'react-icons/io'
 import { type UserLogin } from '../type'
+import Account from './Account'
 
 interface Props {
   handleLogout: () => void
@@ -13,9 +14,17 @@ export const MenuDesktop: React.FC<Props> = ({
   handleLogout
 }): JSX.Element => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isAccountOpen, setIsAccountOpen] = useState(false)
 
   const toggleMenu = (): void => {
     setIsMenuOpen(!isMenuOpen)
+  }
+
+  const handleAccount = (): void => {
+    setIsAccountOpen(!isAccountOpen)
+    if (isMenuOpen) {
+      toggleMenu()
+    }
   }
 
   return (
@@ -56,9 +65,7 @@ export const MenuDesktop: React.FC<Props> = ({
                 <li>
                   <button
                     className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 rounded-md transition duration-300"
-                    onClick={() => {
-                      console.log('Account')
-                    }}
+                    onClick={handleAccount}
                   >
                     Account
                   </button>
@@ -76,6 +83,14 @@ export const MenuDesktop: React.FC<Props> = ({
           </div>
         )}
       </div>
+      {isAccountOpen && (
+        <Account
+          username={user.username}
+          email={user.email}
+          isOpen={isAccountOpen}
+          closeModal={handleAccount}
+        />
+      )}
     </div>
   )
 }

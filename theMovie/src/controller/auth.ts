@@ -10,7 +10,9 @@ export const login = async (data: {
   try {
     const { email, password } = data
 
-    const response = await axios.get<Users[]>(`http://${import.meta.env.VITE_API_URL}:3000/users`)
+    const response = await axios.get<Users[]>(
+      `http://${import.meta.env.VITE_API_URL}:3000/users`
+    )
     const users: Users[] = response.data
 
     const userFound = users.find((user: Users) => user.email === email)
@@ -19,7 +21,10 @@ export const login = async (data: {
       throw new Error('Usuario no encontrado')
     }
 
-    const isPasswordValid = await validatePassword(password, userFound.password)
+    const isPasswordValid = await validatePassword(
+      password,
+      userFound.password
+    )
 
     if (!isPasswordValid) {
       throw new Error('Contraseña incorrecta')
@@ -27,7 +32,15 @@ export const login = async (data: {
 
     const token = generarToken()
 
-    return { token, user: { id: userFound.id, username: userFound.username, email: userFound.email, favorite: userFound.favorite } }
+    return {
+      token,
+      user: {
+        id: userFound.id,
+        username: userFound.username,
+        email: userFound.email,
+        favorite: userFound.favorite
+      }
+    }
   } catch (error) {
     console.error(error)
     return { token: null, user: null }
@@ -48,13 +61,16 @@ export const register = async (data: {
       throw new Error('Error al generar el hash de la contraseña')
     }
 
-    const userCreated = await axios.post(`http://${import.meta.env.VITE_API_URL}:3000/users`, {
-      id: uuidv4(),
-      username,
-      email,
-      password: hashedPassword,
-      favorite: []
-    })
+    const userCreated = await axios.post(
+      `http://${import.meta.env.VITE_API_URL}:3000/users`,
+      {
+        id: uuidv4(),
+        username,
+        email,
+        password: hashedPassword,
+        favorite: []
+      }
+    )
 
     const token = generarToken()
 

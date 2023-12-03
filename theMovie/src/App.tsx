@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate
+} from 'react-router-dom'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Inicio } from './pages/Inicio'
@@ -25,12 +30,15 @@ function App (): JSX.Element {
 
   useEffect(() => {
     axios
-      .get('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
-          Accept: 'application/json'
+      .get(
+        'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
+        {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+            Accept: 'application/json'
+          }
         }
-      })
+      )
       .then((response) => {
         dispatch(setRated(response.data.results))
       })
@@ -41,12 +49,15 @@ function App (): JSX.Element {
 
   useEffect(() => {
     axios
-      .get('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
-          Accept: 'application/json'
+      .get(
+        'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1',
+        {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+            Accept: 'application/json'
+          }
         }
-      })
+      )
       .then((response) => {
         dispatch(setupcoming(response.data.results))
       })
@@ -76,7 +87,12 @@ function App (): JSX.Element {
   }
 
   useEffect(() => {
-    if (movies.length > 0 && rated.length > 0 && upcoming.length > 0 && !favoritesSet) {
+    if (
+      movies.length > 0 &&
+      rated.length > 0 &&
+      upcoming.length > 0 &&
+      !favoritesSet
+    ) {
       searchMovie(favorite).forEach((movie) => {
         dispatch(setFavorite(movie))
       })
@@ -87,9 +103,18 @@ function App (): JSX.Element {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/" element={token !== null ? <Inicio /> : <Navigate to="/login" />} />
+        <Route
+          path="/login"
+          element={user === null ? <Login /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/register"
+          element={user === null ? <Register /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/"
+          element={token !== null ? <Inicio /> : <Navigate to="/login" />}
+        />
         <Route path="/detail/:idMovie" element={<DetailMovie />} />
       </Routes>
     </Router>

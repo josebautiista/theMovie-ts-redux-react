@@ -24,7 +24,9 @@ export const Login: React.FC = () => {
     })
   }
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     event.preventDefault()
     const { token, user } = await login(data)
     if (token !== null) {
@@ -74,7 +76,9 @@ export const Login: React.FC = () => {
               </p>
             )}
           </form>
-          <p className="text-white text-center text-base mt-7">Don’t have an account? <Link to="/register">Register</Link></p>
+          <p className="text-white text-center text-base mt-7">
+            Don’t have an account? <Link to="/register">Register</Link>
+          </p>
         </div>
       </div>
 

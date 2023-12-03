@@ -4,7 +4,11 @@ interface Props {
   value: string
 }
 
-export const InputSearch: React.FC<Props> = ({ onChange, placeholder, value }) => {
+export const InputSearch: React.FC<Props> = ({
+  onChange,
+  placeholder,
+  value
+}) => {
   return (
     <div className="relative my-5 md:w-1/3 w-full">
       <input

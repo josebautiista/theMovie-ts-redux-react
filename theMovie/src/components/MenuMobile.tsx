@@ -4,6 +4,7 @@ import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoIosArrowBack } from 'react-icons/io'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import Account from './Account'
 
 interface Props {
   handleLogout: () => void
@@ -15,9 +16,18 @@ export const MenuMobile: React.FC<Props> = ({
   handleLogout
 }): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isAccountOpen, setIsAccountOpen] = useState(false)
 
   const toggleMenu = (): void => {
     setIsOpen(!isOpen)
+  }
+
+  const handleAccount = (): void => {
+    if (isOpen) {
+      toggleMenu()
+    }
+
+    setIsAccountOpen(!isAccountOpen)
   }
   return (
     <>
@@ -78,16 +88,21 @@ export const MenuMobile: React.FC<Props> = ({
             <Link
               to="#account"
               className="mb-2 text-2xl text-white font-bold"
-              onClick={toggleMenu}
+              onClick={handleAccount}
             >
               Acount
             </Link>
+
             <li className="mb-2 text-xl" onClick={handleLogout}>
               Logout
             </li>
           </ul>
         </div>
+
       </div>
+      {isAccountOpen && (
+              <Account username={user.username} isOpen={isAccountOpen} email={user.email} closeModal={handleAccount} />
+      )}
     </>
   )
 }

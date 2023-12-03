@@ -19,7 +19,7 @@ export const CoverMovie: React.FC<Props> = ({ movie }) => {
   const favoriteMovies = useSelector(
     (state: FavoriteState) => state.favorite.favorites
   )
-  const isFavorite = favoriteMovies.some(
+  const isFavorite: boolean = favoriteMovies.some(
     (favMovie: movie) => favMovie.id === movie.id
   )
   const [favorite, setFavoriteState] = useState(isFavorite)
@@ -28,26 +28,31 @@ export const CoverMovie: React.FC<Props> = ({ movie }) => {
   const navigate = useNavigate()
 
   const handleFavorite: React.MouseEventHandler<HTMLDivElement> = (): void => {
-    const newFavoriteState = !favorite
+    const newFavoriteState: boolean = !favorite
     setFavoriteState(newFavoriteState)
 
     if (newFavoriteState) {
-      axios.patch(`http://${import.meta.env.VITE_API_URL}:3000/users/${user.id}`, {
-        favorite: [...user.favorite, movie.id]
-      }).then(() => {
-        dispatch(setFavorite(movie))
-        dispatch(setFavoriteUser(movie.id))
-      }).catch((error) => {
-        console.log(error)
-      })
+      axios
+        .patch(`http://${import.meta.env.VITE_API_URL}:3000/users/${user.id}`, {
+          favorite: [...user.favorite, movie.id]
+        })
+        .then(() => {
+          dispatch(setFavorite(movie))
+          dispatch(setFavoriteUser(movie.id))
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     } else {
-      axios.patch(`http://${import.meta.env.VITE_API_URL}:3000/users/${user.id}`, {
-        favorite: user.favorite.filter((id: number) => id !== movie.id)
-      })
+      axios
+        .patch(`http://${import.meta.env.VITE_API_URL}:3000/users/${user.id}`, {
+          favorite: user.favorite.filter((id: number) => id !== movie.id)
+        })
         .then(() => {
           dispatch(deleteFavorite(movie.id))
           dispatch(clearFavoriteUser(movie.id))
-        }).catch((error) => {
+        })
+        .catch((error) => {
           console.log(error)
         })
     }
@@ -86,7 +91,10 @@ export const CoverMovie: React.FC<Props> = ({ movie }) => {
         className="w-full h-full object-cover rounded-t-xl md:rounded-xl"
         onClick={handleNavigate}
       />
-      <div onClick={handleNavigate} className="absolute bottom-0 left-0 w-full h-2/3 md:rounded-xl bg-gradient-to-t from-black to-transparent"></div>
+      <div
+        onClick={handleNavigate}
+        className="absolute bottom-0 left-0 w-full h-2/3 md:rounded-xl bg-gradient-to-t from-black to-transparent"
+      ></div>
       <h2 className="text-base absolute bottom-0 left-0 text-left text-white font-normal p-4 w-full">
         {movie.title}
       </h2>

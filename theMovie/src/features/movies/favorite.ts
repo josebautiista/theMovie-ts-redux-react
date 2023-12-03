@@ -18,7 +18,9 @@ const favoriteSlice = createSlice({
       state.favorites = [...state.favorites, action.payload]
     },
     deleteFavorite: (state, action: PayloadAction<number>) => {
-      const index = state.favorites.findIndex((movie) => movie.id === action.payload)
+      const index = state.favorites.findIndex(
+        (movie) => movie.id === action.payload
+      )
       if (index !== -1) {
         state.favorites.splice(index, 1)
       }
