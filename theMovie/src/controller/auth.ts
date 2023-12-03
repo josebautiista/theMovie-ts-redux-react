@@ -11,7 +11,7 @@ export const login = async (data: {
     const { email, password } = data
 
     const response = await axios.get<Users[]>(
-      `http://${import.meta.env.VITE_API_URL}:3000/users`
+      'http://localhost:3000/users'
     )
     const users: Users[] = response.data
 
@@ -62,7 +62,7 @@ export const register = async (data: {
     }
 
     const userCreated = await axios.post(
-      `http://${import.meta.env.VITE_API_URL}:3000/users`,
+      'http://localhost:3000/users',
       {
         id: uuidv4(),
         username,

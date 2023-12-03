@@ -17,16 +17,16 @@ export const Inicio: React.FC = () => {
   return (
     <div className="w-full h-full flex flex-col gap-2">
       <Hero />
-      <div className="w-full flex items-center justify-center flex-col gap-2 max-w-7xl my-0 mx-auto px-6">
+      <div className="w-full flex items-center justify-center flex-col gap-2 max-w-7xl my-0 mx-auto">
         <SectionMovies nombre="Popular" movies={movies} id="popular" />
       </div>
-      <div className="w-full flex items-center justify-center flex-col gap-2 max-w-7xl my-0 mx-auto px-6">
+      <div className="w-full flex items-center justify-center flex-col gap-2 max-w-7xl my-0 mx-auto">
         <SectionMovies nombre="Top Rated" movies={rated} id="rated" />
       </div>
-      <div className="w-full flex items-center justify-center flex-col gap-2 max-w-7xl my-0 mx-auto px-6">
+      <div className="w-full flex items-center justify-center flex-col gap-2 max-w-7xl my-0 mx-auto">
         <SectionMovies nombre="Upcoming" movies={upcoming} id="upcoming" />
       </div>
-      <div className="w-full flex items-center justify-center flex-col gap-2 max-w-7xl my-0 mx-auto px-6">
+      <div className="w-full flex items-center justify-center flex-col gap-2 max-w-7xl my-0 mx-auto">
         <SectionMovies nombre="Favorites" movies={favorites} id="favorites" />
       </div>
     </div>

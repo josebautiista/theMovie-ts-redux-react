@@ -33,7 +33,7 @@ export const CoverMovie: React.FC<Props> = ({ movie }) => {
 
     if (newFavoriteState) {
       axios
-        .patch(`http://${import.meta.env.VITE_API_URL}:3000/users/${user.id}`, {
+        .patch(`http://localhost:3000/users/${user.id}`, {
           favorite: [...user.favorite, movie.id]
         })
         .then(() => {
@@ -45,7 +45,7 @@ export const CoverMovie: React.FC<Props> = ({ movie }) => {
         })
     } else {
       axios
-        .patch(`http://${import.meta.env.VITE_API_URL}:3000/users/${user.id}`, {
+        .patch(`http://localhost:3000/users/${user.id}`, {
           favorite: user.favorite.filter((id: number) => id !== movie.id)
         })
         .then(() => {

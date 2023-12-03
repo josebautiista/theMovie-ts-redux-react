@@ -12,11 +12,10 @@ export const DetailMovie = (): JSX.Element => {
     axios
       .get(
         `https://api.themoviedb.org/3/movie/${idMovie}?api_key=${
-          import.meta.env.VITE_API_KEY_DET
+          import.meta.env.VITE_API_KEY
         }&language=en-US`
       )
       .then((response) => {
-        console.log(response.data)
         setMovie(response.data)
       })
       .catch((error) => {
@@ -43,9 +42,9 @@ export const DetailMovie = (): JSX.Element => {
               <p className="text-white text-sm mt-2">
                 Rating: {movie.vote_average}
               </p>
-              <p className="text-white mt-4">{movie.overview}</p>
+              <p className="text-white mt-4 text-left">{movie.overview}</p>
               <p className="text-white text-xl mt-2">Genres:</p>
-              <ul className="flex flex-wrap my-2 w-2/3 justify-center gap-4 mx-auto">
+              <ul className="flex flex-wrap my-2 w-full justify-center gap-4 mx-auto">
                 {movie.genres.map((genre: Genre) => (
                   <li
                     key={genre.id}

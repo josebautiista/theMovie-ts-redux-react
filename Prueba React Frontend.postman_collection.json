@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "ea3c0eb7-3aba-4f62-bfc7-a1e3766e4a2c",
+		"name": "Prueba React Indira",
+		"description": "La siguiente prueba de React constará de crear una plataforma web donde se consumen peliculas de este sitio: [https://www.themoviedb.org/](https://www.themoviedb.org/)\n\nAquí se mostrarán algunas ideas de la plataforma a desarrollar\n\n[https://www.figma.com/file/mZtVpcsgPoCFj7KiFQH4QL/Prueba-frontend?type=design&amp;node-id=0:1&amp;mode=design&amp;t=TLjDXPU3c8Gu6AH6-1](https://www.figma.com/file/mZtVpcsgPoCFj7KiFQH4QL/Prueba-frontend?type=design&node-id=0%3A1&mode=design&t=TLjDXPU3c8Gu6AH6-1)\n\n**Login**\n\n<img src=\"https://content.pstmn.io/5a999833-4bd8-4a90-97c6-a4cd1c6e0abc/aW1hZ2UucG5n\" alt=\"Login%20mobile\" width=\"430\" height=\"932\">\n\n<img src=\"https://content.pstmn.io/15c0956b-f912-48c5-b503-09e732ed0b92/aW1hZ2UucG5n\" alt=\"Login%20desktop\" width=\"1920\" height=\"1080\">\n\n**Home**\n\n<img src=\"https://content.pstmn.io/ffdc14a1-49be-4e98-849a-ee88d1a73195/aW1hZ2UucG5n\" alt=\"Home%20mobile\" width=\"432\" height=\"1915\">\n\n<img src=\"https://content.pstmn.io/4110ad00-05a0-4500-821a-bfbda43fdc69/aW1hZ2UucG5n\" alt=\"Home%20desktop\" width=\"1920\" height=\"2498\">\n\n**Tener en cuenta**\n\n- La plataforma debe ser responsive, en figma se muestran algunas ideas para el diseño móvil y desktop, puedes proponer tu propio diseño. Puedes realizar los estilos con alguna utilidad o framework, puede ser CSS, TailwindCSS, Skeleton, Bootstrap, etc.\n- La app debe construirse en React con hooks, con Typescript con algún manejador de estado como tal vez Context o Redux, se valora buenas prácticas de código.\n- El diseño es una propuesta, lo puedes mejorar a tu gusto.\n- Debe tener filtro por las secciones, sólo por el nombre y se debe ir reflejando el cambio.\n- Debe priorizar notificaciones de las operaciones al usuario, como cuando este cargando la petición o cuando no encuentre resultados con la búsqueda.\n    \n\n**Funcionamiento**\n\n1. La plataforma va a contener un login, el cual estaría alojado en un json local. Podría obtarse por JSON-Server para servirlo. Se debe validar el ingreso a la plataforma y crear un token ficticio que mantenga la sesión.\n2. Cuando ya el usuario tiene una sesión, puedeconsultar las api de las películas de [https://www.themoviedb.org/.](https://www.themoviedb.org/.) Debes crear una cuenta en este sitio para obtener el apiKey para las solicitudes. Las consultas que se hacen son:\n    1. Get popular movies\n    2. Get top rated movies\n    3. Get upcoming movies\n    4. Get movie details\n    5. Get images (Consultar las imagenes de las peliculas)\n\n<img src=\"https://content.pstmn.io/eb0a63ca-81f7-4a92-a904-8285ca701ba7/aW1hZ2UucG5n\" width=\"527\" height=\"207\">\n\nEn este archivo de postman se muestran los endpoints anterior mencionados.\n\nEn el home puedes filtrar las peliculas de cada sección por nombre, paginar las peliculas también en caso de que no exista la búsqueda informar al usuario.\n\n3\\. Cuando des clic sobre un item, te debe llevar a una página con el name, release, vote, overview, production companies y un link hacia la página.\n\n<img src=\"https://content.pstmn.io/b4504af2-1e1d-40e5-a46b-dd4a0de762e7/aW1hZ2UucG5n\" alt=\"Pelicula%20detallada%20desktop\n<br>\n<br>Más%20detalles%20en%20el%20diseño%20de%20figma.\" width=\"1920\" height=\"1080\">\n\n4\\. Debes mantener la sesión con token ficticio, que puedas crear, cuando inicies sesión y recargues la página se mantenga la sesión hasta que se cierre.\n\n5\\. Debes crear un apartado con la sección de favoritos, donde agregues peliculas de cualquiera de las secciones, popular / top rated / upcoming y la agregues y borres de esa sección (favoritos). Cuando recargues la sesión debe persistir las peliculas favoritas.\n\n6\\. Finalmente tener la facultad de salir de la sesión.\n\nCuando termines por favor, proporcionar el link del repositorio.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8965796"
+	},
+	"item": [
+		{
+			"name": "Popular movies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NGViYzUzODRiZjMxMmNkYTVhYWU4N2UyM2YyN2Y1YiIsInN1YiI6IjY1NjRmZDI4N2RmZGE2NTkzNTNiY2QwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UNAnlqdXiFaYME8gglGLV3p_X6zGmQNuSSOMVPqHYgI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"popular"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "en-US"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Top rated movies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NGViYzUzODRiZjMxMmNkYTVhYWU4N2UyM2YyN2Y1YiIsInN1YiI6IjY1NjRmZDI4N2RmZGE2NTkzNTNiY2QwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UNAnlqdXiFaYME8gglGLV3p_X6zGmQNuSSOMVPqHYgI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"top_rated"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "en-US"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upcoming movies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NGViYzUzODRiZjMxMmNkYTVhYWU4N2UyM2YyN2Y1YiIsInN1YiI6IjY1NjRmZDI4N2RmZGE2NTkzNTNiY2QwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UNAnlqdXiFaYME8gglGLV3p_X6zGmQNuSSOMVPqHYgI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"upcoming"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "en-US"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get movie details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NGViYzUzODRiZjMxMmNkYTVhYWU4N2UyM2YyN2Y1YiIsInN1YiI6IjY1NjRmZDI4N2RmZGE2NTkzNTNiY2QwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UNAnlqdXiFaYME8gglGLV3p_X6zGmQNuSSOMVPqHYgI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/movie/872585?language=en-US",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"872585"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "en-US"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get image",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://image.tmdb.org/t/p/original/tmU7GeKVybMWFButWEGl2M4GeiP.jpg",
+					"protocol": "https",
+					"host": [
+						"image",
+						"tmdb",
+						"org"
+					],
+					"path": [
+						"t",
+						"p",
+						"original",
+						"tmU7GeKVybMWFButWEGl2M4GeiP.jpg"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

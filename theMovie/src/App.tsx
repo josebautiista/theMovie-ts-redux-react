@@ -34,7 +34,7 @@ function App (): JSX.Element {
         'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
         {
           headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+            Authorization: `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
             Accept: 'application/json'
           }
         }
@@ -53,7 +53,7 @@ function App (): JSX.Element {
         'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1',
         {
           headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+            Authorization: `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
             Accept: 'application/json'
           }
         }
@@ -98,7 +98,7 @@ function App (): JSX.Element {
       })
       setFavoritesSet(true)
     }
-  }, [movies, rated, upcoming, favorite, favoritesSet, dispatch])
+  }, [upcoming])
 
   return (
     <Router>

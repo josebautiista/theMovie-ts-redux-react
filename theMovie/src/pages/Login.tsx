@@ -7,6 +7,8 @@ import { login } from '../controller/auth'
 import { useDispatch } from 'react-redux'
 import { setToken } from '../features/token/token'
 import { setUserLogin } from '../features/user/user'
+import { LoginSchema } from '../schemas/login'
+import { z } from 'zod'
 
 export const Login: React.FC = () => {
   const [data, setData] = useState({
@@ -14,6 +16,7 @@ export const Login: React.FC = () => {
     password: ''
   })
   const [error, setError] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({})
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -24,27 +27,48 @@ export const Login: React.FC = () => {
     })
   }
 
-  const handleSubmit = async (
+  const handleSubmit = (
     event: React.FormEvent<HTMLFormElement>
-  ): Promise<void> => {
+  ): void => {
     event.preventDefault()
-    const { token, user } = await login(data)
-    if (token !== null) {
-      localStorage.setItem('tokenMovie', token)
-      localStorage.setItem('user', JSON.stringify(user))
-      dispatch(setToken(token))
-      dispatch(setUserLogin(user))
-      navigate('/')
-      window.location.reload()
-    } else {
-      setError(true)
+
+    try {
+      const validatedData = LoginSchema.parse(data)
+      login(validatedData).then(({ token, user }) => {
+        if (token !== null) {
+          localStorage.setItem('tokenMovie', token)
+          localStorage.setItem('user', JSON.stringify(user))
+          dispatch(setToken(token))
+          dispatch(setUserLogin(user))
+          navigate('/')
+          window.location.reload()
+        } else {
+          setError(true)
+        }
+      }).catch((error) => {
+        console.error('Error during login:', error)
+      })
+    } catch (error) {
+      console.error('Validation error:', error)
+      if (error instanceof z.ZodError) {
+        setErrors(error.errors.reduce((prev: Record<string, string>, curr) => {
+          if (curr.path !== undefined) {
+            if (curr.message === 'Invalid') {
+              prev[curr.path.join('.')] = 'Password must contain at least 1 number'
+              return prev
+            }
+            prev[curr.path.join('.')] = curr.message
+          }
+          return prev
+        }, {}))
+      }
     }
   }
 
   return (
-    <div className="w-full h-screen flex">
+    <div className="w-full h-screen flex items-center">
       <div className="w-full md:w-1/3 h-screen flex items-center justify-center ">
-        <div className="w-3/4  h-4/5 flex flex-col gap-8">
+        <div className="w-3/4 flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <h1 className="text-3xl font-bold text-white text-left">Login</h1>
             <p className="text-white text-left text-base">
@@ -60,6 +84,7 @@ export const Login: React.FC = () => {
               onChange={handleChange}
               value={data.email}
             />
+            {errors.email !== undefined && <p className="text-red-500">{errors.email}</p>}
             <Input
               type="password"
               placeholder="●●●●●●●●●●"
@@ -68,6 +93,7 @@ export const Login: React.FC = () => {
               onChange={handleChange}
               value={data.password}
             />
+            {errors.password !== undefined && <p className="text-red-500">{errors.password}</p>}
             <Button text="Login" />
 
             {error && (

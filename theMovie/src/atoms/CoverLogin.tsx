@@ -14,7 +14,7 @@ export const CoverLogin: React.FC = () => {
     axios
       .get('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', {
         headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+          Authorization: `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
           Accept: 'application/json'
         }
       })
